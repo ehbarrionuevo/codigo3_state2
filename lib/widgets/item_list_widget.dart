@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 
 class ItemListWidget extends StatelessWidget {
   String userName;
-  ItemListWidget({required this.userName});
+  String role;
+  ItemListWidget({
+    required this.userName,
+    required this.role,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,10 +18,10 @@ class ItemListWidget extends StatelessWidget {
           userName,
         ),
         subtitle: Text(
-          "Mensaje",
+          "Rol: $role",
         ),
-        trailing: Icon(Icons.check),
-        leading: CircleAvatar(),
+        trailing: const Icon(Icons.check),
+        leading: const CircleAvatar(),
       ),
     );
   }
