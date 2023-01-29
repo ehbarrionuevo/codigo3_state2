@@ -2,6 +2,17 @@ import 'package:codigo3_state2/widgets/item_list_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
+  List<String> users = [
+    "Luis",
+    "Jose",
+    "Mitchell",
+    "Richard",
+    "Fabrizio",
+    "Evert",
+    "Angelo",
+    "Christian"
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +30,12 @@ class HomePage extends StatelessWidget {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                ...List.generate(3, (index) => ItemListWidget()),
+                ...List.generate(
+                  users.length,
+                  (index) => ItemListWidget(
+                    userName: users[index],
+                  ),
+                ),
               ],
             ),
           ),
