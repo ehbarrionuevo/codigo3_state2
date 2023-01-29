@@ -1,3 +1,4 @@
+import 'package:codigo3_state2/role.dart';
 import 'package:codigo3_state2/widgets/item_list_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -22,8 +23,31 @@ class _HomePageState extends State<HomePage> {
     },
   ];
 
+  List<String> roles = [
+    "Admin",
+    "Jefe de proyectos",
+    "Supervisor",
+    "Gerente",
+  ];
+
+  List<Role> roles2 = [
+    Role(
+      id: 1,
+      role: "Admin",
+    ),
+    Role(
+      id: 2,
+      role: "Supervisor",
+    ),
+    Role(
+      id: 3,
+      role: "Gerente",
+    ),
+  ];
+
   String username = "";
   String superheroValue = "A";
+  String roleValue = "Admin";
 
   @override
   Widget build(BuildContext context) {
@@ -47,31 +71,39 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(
                   height: 16,
                 ),
+                // DropdownButton(
+                //   value: roleValue,
+                //   isExpanded: true,
+                //   items: List.generate(
+                //     roles.length,
+                //     (index) => DropdownMenuItem(
+                //       value: roles[index],
+                //       child: Text(roles[index]),
+                //     ),
+                //   ),
+                //   onChanged: (String? value) {
+                //     roleValue = value!;
+                //     setState(() {});
+                //   },
+                // ),
+
                 DropdownButton(
-                  value: superheroValue,
-                  items: [
-                    DropdownMenuItem(
-                      value: "A",
-                      child: Text("Batman"),
+                  value: roleValue,
+                  items: List.generate(
+                    roles2.length,
+                    (index) => DropdownMenuItem(
+                      value: roles2[index].role,
+                      child: Text(
+                        roles2[index].role,
+                      ),
                     ),
-                    DropdownMenuItem(
-                      value: "B",
-                      child: Text("Superman"),
-                    ),
-                    DropdownMenuItem(
-                      value: "C",
-                      child: Text("Flash"),
-                    ),
-                    DropdownMenuItem(
-                      value: "D",
-                      child: Text("Wonder Woman"),
-                    ),
-                  ],
+                  ),
                   onChanged: (String? value) {
-                    superheroValue = value!;
+                    roleValue = value!;
                     setState(() {});
                   },
                 ),
+
                 const SizedBox(
                   height: 16,
                 ),
@@ -86,7 +118,7 @@ class _HomePageState extends State<HomePage> {
                   onPressed: () {
                     Map data = {
                       "username": username,
-                      "role": "Admin",
+                      "role": roleValue,
                     };
 
                     users.add(data);
